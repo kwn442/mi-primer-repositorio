@@ -16,11 +16,12 @@ jobs:
     steps:
     - uses: actions/checkout@v4
     - name: Build the Docker image
-      run: docker build . --file Dockerfile --tag my-image-name:latest
+      run:  docker image tag my-image-name:latest tajamarabde/my-image-name:latest
     - name: Run  Docker container
       run: docker run -d -p 80:80 --name miapp my-image-name:latest
     - name: Push  Docker image to Docker-hub
       run: |
        echo dckr_pat_g_odH4bJ-7NkDs0vV9J2pY47w5k  | docker login --username tajamarabde --password-stdin
        docker push tajamarabde/my-image-name:latest
+
 
